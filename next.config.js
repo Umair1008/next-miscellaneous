@@ -1,7 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-}
+	reactStrictMode: true,
+	swcMinify: true,
+	redirects: async () => {
+		return [
+			{
+				source: "/about",
+				destination: "/",
+				permanent: false,
+			},
+			{
+				source: "/old-blog/:id",
+				destination: "/blog/:id",
+				permanent: true,
+			},
+		];
+	},
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
